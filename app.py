@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -171,7 +172,16 @@ if st.button("Analyze My Career"):
         st.bar_chart(
             chart_data.set_index("Job Role")
         )
-
     else:
         st.warning("Please enter your skills.")
-        
+        st.header("📄 Upload Your Resume")
+
+uploaded_file = st.file_uploader(
+    "Upload your resume (TXT format)",
+    type=["txt"]
+)
+
+if uploaded_file is not None:
+    resume_text = uploaded_file.read().decode("utf-8")
+
+    st.success("Resume uploaded successfully!")
