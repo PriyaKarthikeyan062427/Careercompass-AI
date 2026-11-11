@@ -17,7 +17,7 @@ st.write("Discover your career path with AI.")
 # Load Dataset
 @st.cache_data
 def load_data():
-return pd.read_csv("cleaned_dataset.csv")
+    return pd.read_csv("cleaned_dataset.csv")
 
 df = load_data()
 df["Required_Skills"] = df["Required_Skills"].fillna("")
